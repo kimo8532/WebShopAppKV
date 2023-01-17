@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32228.430
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MainForm", "MainForm\MainForm.csproj", "{5343DEC4-1B3B-47FE-99A2-84B49F3F5CDB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebShopLibrary", "Product\WebShopLibrary.csproj", "{C3A49D06-6411-4831-98A0-07B3BE6079B3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5343DEC4-1B3B-47FE-99A2-84B49F3F5CDB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5343DEC4-1B3B-47FE-99A2-84B49F3F5CDB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5343DEC4-1B3B-47FE-99A2-84B49F3F5CDB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5343DEC4-1B3B-47FE-99A2-84B49F3F5CDB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C3A49D06-6411-4831-98A0-07B3BE6079B3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C3A49D06-6411-4831-98A0-07B3BE6079B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C3A49D06-6411-4831-98A0-07B3BE6079B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C3A49D06-6411-4831-98A0-07B3BE6079B3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FDA6B563-6625-4BD0-ABB1-8B865426B587}
+	EndGlobalSection
+EndGlobal
