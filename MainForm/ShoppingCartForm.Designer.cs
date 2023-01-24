@@ -37,14 +37,14 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ShoppingCartForm));
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.shoppingCartBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.btnCheckout = new System.Windows.Forms.Button();
-            this.btnClose = new System.Windows.Forms.Button();
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.title = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Delete = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.shoppingCartBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.btnCheckout = new System.Windows.Forms.Button();
+            this.btnClose = new System.Windows.Forms.Button();
             this.labelPrice = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.shoppingCartBindingSource)).BeginInit();
@@ -105,39 +105,6 @@
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
-            // shoppingCartBindingSource
-            // 
-            this.shoppingCartBindingSource.CurrentChanged += new System.EventHandler(this.shoppingCartBindingSource_CurrentChanged);
-            // 
-            // btnCheckout
-            // 
-            this.btnCheckout.BackColor = System.Drawing.Color.DodgerBlue;
-            this.btnCheckout.FlatAppearance.BorderColor = System.Drawing.Color.Blue;
-            this.btnCheckout.FlatAppearance.BorderSize = 20;
-            this.btnCheckout.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnCheckout.Font = new System.Drawing.Font("Nirmala UI", 15.75F, System.Drawing.FontStyle.Bold);
-            this.btnCheckout.Location = new System.Drawing.Point(12, 389);
-            this.btnCheckout.Name = "btnCheckout";
-            this.btnCheckout.Size = new System.Drawing.Size(164, 49);
-            this.btnCheckout.TabIndex = 1;
-            this.btnCheckout.Text = "Checkout";
-            this.btnCheckout.UseVisualStyleBackColor = true;
-            // 
-            // btnClose
-            // 
-            this.btnClose.BackColor = System.Drawing.Color.DodgerBlue;
-            this.btnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnClose.FlatAppearance.BorderColor = System.Drawing.Color.Blue;
-            this.btnClose.FlatAppearance.BorderSize = 20;
-            this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnClose.Font = new System.Drawing.Font("Nirmala UI", 15.75F, System.Drawing.FontStyle.Bold);
-            this.btnClose.Location = new System.Drawing.Point(624, 389);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(164, 49);
-            this.btnClose.TabIndex = 2;
-            this.btnClose.Text = "Close";
-            this.btnClose.UseVisualStyleBackColor = true;
-            // 
             // id
             // 
             this.id.HeaderText = "Product ID";
@@ -172,6 +139,40 @@
             this.Delete.Name = "Delete";
             this.Delete.ReadOnly = true;
             this.Delete.Text = "Delete from cart";
+            // 
+            // shoppingCartBindingSource
+            // 
+            this.shoppingCartBindingSource.CurrentChanged += new System.EventHandler(this.shoppingCartBindingSource_CurrentChanged);
+            // 
+            // btnCheckout
+            // 
+            this.btnCheckout.BackColor = System.Drawing.Color.DodgerBlue;
+            this.btnCheckout.FlatAppearance.BorderColor = System.Drawing.Color.Blue;
+            this.btnCheckout.FlatAppearance.BorderSize = 20;
+            this.btnCheckout.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnCheckout.Font = new System.Drawing.Font("Nirmala UI", 15.75F, System.Drawing.FontStyle.Bold);
+            this.btnCheckout.Location = new System.Drawing.Point(12, 389);
+            this.btnCheckout.Name = "btnCheckout";
+            this.btnCheckout.Size = new System.Drawing.Size(164, 49);
+            this.btnCheckout.TabIndex = 1;
+            this.btnCheckout.Text = "Checkout";
+            this.btnCheckout.UseVisualStyleBackColor = true;
+            // 
+            // btnClose
+            // 
+            this.btnClose.BackColor = System.Drawing.Color.DodgerBlue;
+            this.btnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnClose.FlatAppearance.BorderColor = System.Drawing.Color.Blue;
+            this.btnClose.FlatAppearance.BorderSize = 20;
+            this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnClose.Font = new System.Drawing.Font("Nirmala UI", 15.75F, System.Drawing.FontStyle.Bold);
+            this.btnClose.Location = new System.Drawing.Point(624, 389);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(164, 49);
+            this.btnClose.TabIndex = 2;
+            this.btnClose.Text = "Close";
+            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // labelPrice
             // 

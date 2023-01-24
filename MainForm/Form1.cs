@@ -38,7 +38,7 @@ namespace MainForm
         }
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            
+
         }
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -48,7 +48,7 @@ namespace MainForm
 
         private void comboBoxFilter_SelectedIndexChanged(object sender, EventArgs e)
         {
-           
+
         }
 
         private void buttonFilter_Click(object sender, EventArgs e)
@@ -66,7 +66,33 @@ namespace MainForm
 
         private void buttonLogin_Click(object sender, EventArgs e)
         {
+            AdminLoginForm adminLoginForm = new AdminLoginForm();
+            adminLoginForm.Show();
 
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            UpdateDataSource(checkBox1, checkBox2, ProductRepository.GetProducts(), ProductRepository.GetProductsDB());
+        }
+
+        private void checkBox2_CheckedChanged(object sender, EventArgs e)
+        {
+            UpdateDataSource(checkBox2, checkBox1, ProductRepository.GetProductsDB(), ProductRepository.GetProducts());
+        }
+        private void UpdateDataSource(CheckBox checkbox1, CheckBox checkbox2, object dataSource1, object dataSource2)
+        {
+            if (checkbox1.Checked)
+            {
+                tableBindingSource.DataSource = dataSource1;
+                checkbox2.Checked = false;
+            }
+            else
+            {
+                tableBindingSource.DataSource = dataSource2;
+                checkbox2.Checked = true;
+            }
+            dataGridView1.DataSource = tableBindingSource;
         }
     }
 }

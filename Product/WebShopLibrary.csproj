@@ -44,6 +44,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Invoice.cs" />
+    <Compile Include="InvoiceRepository.cs" />
     <Compile Include="ShoppingCart.cs" />
     <Compile Include="Product.cs" />
     <Compile Include="ProductRepository.cs" />
