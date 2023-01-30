@@ -35,7 +35,7 @@ namespace WebShopLibrary
             {
                 ProductsREST.Add(new Product
                 {
-                    id = (string)item.GetValue("id"),
+                    id = (int)item.GetValue("id"),
                     title = (string)item.GetValue("title"),
                     price = (float)item.GetValue("price"),
                     description = (string)item.GetValue("description"),
@@ -47,8 +47,7 @@ namespace WebShopLibrary
             using (DbConnection connection = new SqlConnection(connectionString))
             using (DbCommand command = connection.CreateCommand())
             {
-                command.CommandText = "INSERT INTO Nemet_Products (id, title, price, description, category, image) VALUES (@id, @title, @price, @description, @category, @image)";
-                command.Parameters.Add(new SqlParameter("@id", SqlDbType.NVarChar) { Size = 50 });
+                command.CommandText = "INSERT INTO Nemet_Products (title, price, description, category, image) VALUES (@title, @price, @description, @category, @image)";
                 command.Parameters.Add(new SqlParameter("@title", SqlDbType.NVarChar) { Size = 50 });
                 command.Parameters.Add(new SqlParameter("@price", SqlDbType.Money));
                 command.Parameters.Add(new SqlParameter("@description", SqlDbType.Text));
@@ -57,7 +56,6 @@ namespace WebShopLibrary
 
                 foreach (Product product in ProductsREST)
                 {
-                    command.Parameters["@id"].Value = product.id;
                     command.Parameters["@title"].Value = product.title;
                     command.Parameters["@price"].Value = product.price;
                     command.Parameters["@description"].Value = product.description;
@@ -77,7 +75,7 @@ namespace WebShopLibrary
             using (DbCommand command = connection.CreateCommand())
             {
                 command.CommandText = "DELETE FROM Nemet_Products WHERE id = @id";
-                command.Parameters.Add(new SqlParameter("@id", SqlDbType.NVarChar) { Value = id });
+                command.Parameters.Add(new SqlParameter("@id", SqlDbType.Int) { Value = id });
                 connection.Open();
                 command.ExecuteNonQuery();
             }
@@ -88,14 +86,12 @@ namespace WebShopLibrary
             using (DbConnection connection = new SqlConnection(connectionString))
             using (DbCommand command = connection.CreateCommand())
             {
-                command.CommandText = "INSERT INTO Nemet_Products (id, title, price, description, category, image) VALUES (@id, @title, @price, @description, @category, @image)";
-                command.Parameters.Add(new SqlParameter("@id", SqlDbType.NVarChar) { Size = 50 });
+                command.CommandText = "INSERT INTO Nemet_Products (title, price, description, category, image) VALUES (@title, @price, @description, @category, @image)";
                 command.Parameters.Add(new SqlParameter("@title", SqlDbType.NVarChar) { Size = 50 });
                 command.Parameters.Add(new SqlParameter("@price", SqlDbType.Money));
                 command.Parameters.Add(new SqlParameter("@description", SqlDbType.Text));
                 command.Parameters.Add(new SqlParameter("@category", SqlDbType.NVarChar) { Size = 50 });
                 command.Parameters.Add(new SqlParameter("@image", SqlDbType.Text));
-                command.Parameters["@id"].Value = product.id;
                 command.Parameters["@title"].Value = product.title;
                 command.Parameters["@price"].Value = product.price;
                 command.Parameters["@description"].Value = product.description;
@@ -126,7 +122,7 @@ namespace WebShopLibrary
                         }
                         products.Add(new Product()
                         {
-                            id = (string)reader["id"],
+                            id = (int)reader["id"],
                             title = (string)reader["title"],
                             price = price,
                             description = (string)reader["description"],
@@ -146,7 +142,7 @@ namespace WebShopLibrary
             {
                 ProductsREST.Add(new Product
                 {
-                    id = (string)item.GetValue("id"),
+                    id = (int)item.GetValue("id"),
                     title = (string)item.GetValue("title"),
                     price = (float)item.GetValue("price"),
                     description = (string)item.GetValue("description"),
@@ -194,7 +190,7 @@ namespace WebShopLibrary
                 using (DbCommand command = connection.CreateCommand())
                 {
                     command.CommandText = "UPDATE Nemet_Products SET title=@title, price=@price, description=@description, category=@category, image=@image WHERE id = @id";
-                    command.Parameters.Add(new SqlParameter("@id", SqlDbType.NVarChar) { Value = product.id });
+                    command.Parameters.Add(new SqlParameter("@id", SqlDbType.Int) { Value = product.id });
                     command.Parameters.Add(new SqlParameter("@title", SqlDbType.NVarChar) { Value = product.title });
                     command.Parameters.Add(new SqlParameter("@price", SqlDbType.Money) { Value = product.price });
                     command.Parameters.Add(new SqlParameter("@description", SqlDbType.Text) { Value = product.description });

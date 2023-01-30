@@ -36,16 +36,23 @@ namespace MainForm
         }
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            float overAllPrice = 0;
-            if (e.ColumnIndex == 4)
+            try
             {
-                dataGridView1.Rows.RemoveAt(e.RowIndex);
-                _shoppingCart.Products.RemoveAt(e.RowIndex);
-                for (int i = 0; i < _shoppingCart.Products.Count; i++)
+                float overAllPrice = 0;
+                if (e.ColumnIndex == 4)
                 {
-                    overAllPrice += _shoppingCart.Products[i].price * _shoppingCart.ProductQuantity[i];
+                    dataGridView1.Rows.RemoveAt(e.RowIndex);
+                    _shoppingCart.Products.RemoveAt(e.RowIndex);
+                    for (int i = 0; i < _shoppingCart.Products.Count; i++)
+                    {
+                        overAllPrice += _shoppingCart.Products[i].price * _shoppingCart.ProductQuantity[i];
+                    }
+                    labelPrice.Text = overAllPrice.ToString() + "€";
                 }
-                labelPrice.Text = overAllPrice.ToString() + "€";
+            }
+            catch(Exception ex)
+            {
+
             }
         }
 
@@ -78,7 +85,14 @@ namespace MainForm
 
         private void btnClose_Click(object sender, EventArgs e)
         {
+            this.Hide();
+        }
 
+        private void btnCheckout_Click(object sender, EventArgs e)
+        {
+            CheckoutForm checkoutForm = new CheckoutForm(_shoppingCart);
+            checkoutForm.Show();
+            this.Hide();
         }
     }
 }

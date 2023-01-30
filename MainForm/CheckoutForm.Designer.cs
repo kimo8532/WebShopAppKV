@@ -53,24 +53,30 @@
             // checkBoxCash
             // 
             this.checkBoxCash.AutoSize = true;
+            this.checkBoxCash.BackColor = System.Drawing.Color.DodgerBlue;
+            this.checkBoxCash.Font = new System.Drawing.Font("Nirmala UI", 8F, System.Drawing.FontStyle.Bold);
             this.checkBoxCash.Location = new System.Drawing.Point(672, 367);
             this.checkBoxCash.Name = "checkBoxCash";
-            this.checkBoxCash.Size = new System.Drawing.Size(70, 17);
+            this.checkBoxCash.Size = new System.Drawing.Size(71, 17);
             this.checkBoxCash.TabIndex = 8;
             this.checkBoxCash.Text = "Pay cash";
-            this.checkBoxCash.UseVisualStyleBackColor = true;
+            this.checkBoxCash.UseVisualStyleBackColor = false;
+            this.checkBoxCash.CheckedChanged += new System.EventHandler(this.checkBoxCash_CheckedChanged);
             // 
             // checkBoxCreditCard
             // 
             this.checkBoxCreditCard.AutoSize = true;
+            this.checkBoxCreditCard.BackColor = System.Drawing.Color.DodgerBlue;
             this.checkBoxCreditCard.Checked = true;
             this.checkBoxCreditCard.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxCreditCard.Font = new System.Drawing.Font("Nirmala UI", 8F, System.Drawing.FontStyle.Bold);
             this.checkBoxCreditCard.Location = new System.Drawing.Point(672, 409);
             this.checkBoxCreditCard.Name = "checkBoxCreditCard";
-            this.checkBoxCreditCard.Size = new System.Drawing.Size(119, 17);
+            this.checkBoxCreditCard.Size = new System.Drawing.Size(128, 17);
             this.checkBoxCreditCard.TabIndex = 9;
             this.checkBoxCreditCard.Text = "Pay with credit card";
-            this.checkBoxCreditCard.UseVisualStyleBackColor = true;
+            this.checkBoxCreditCard.UseVisualStyleBackColor = false;
+            this.checkBoxCreditCard.CheckedChanged += new System.EventHandler(this.checkBoxCreditCard_CheckedChanged);
             // 
             // buttonPay
             // 
@@ -277,6 +283,7 @@
             this.Controls.Add(this.checkBoxCash);
             this.Name = "CheckoutForm";
             this.Text = "CheckoutForm";
+            this.Load += new System.EventHandler(this.CheckoutForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

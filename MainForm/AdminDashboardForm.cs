@@ -55,9 +55,12 @@ namespace MainForm
         {
             try
             {
+                if (textBoxProductName.Text == "" || !float.TryParse(textBoxPrice.Text, out _) || richTextBoxProductDescription.Text == "" || comboBoxCategory.Text == "" || textBoxImageUrl.Text =="")
+                {
+                    throw new Exception("Fill out all the fields");
+                }
                 Product product = new Product()
                 {
-                    id = $"{ProductRepository.GetProductsDB().Count() + 1}",
                     title = textBoxProductName.Text,
                     price = float.Parse(textBoxPrice.Text),
                     description = richTextBoxProductDescription.Text,
@@ -91,7 +94,7 @@ namespace MainForm
             textBoxPriceUpdate.Text = $"{Convert.ToString(products[e.RowIndex].price)}€";
             textBoxImageUrlUpdate.Text = products[e.RowIndex].image;
             richTextBoxProductDescription.Text = products[e.RowIndex].description;
-            labelID.Text= products[e.RowIndex].id;
+            labelID.Text= $"{products[e.RowIndex].id}";
         }
         private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -107,7 +110,7 @@ namespace MainForm
         {
             List<Product> products = ProductRepository.GetProductsDB();
             labelProductTitleDelete.Text = products[e.RowIndex].title;
-            labelProductId.Text = products[e.RowIndex].id;
+            labelProductId.Text = $"{products[e.RowIndex].id}";
         }
         private void dataGridView3_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -148,13 +151,13 @@ namespace MainForm
             UpdateAlert.Location = new Point(85, 281);
             UpdateAlert.AutoSize = true;
             tabControl1.TabPages[2].Controls.Add(UpdateAlert);
-            if (!(textBoxProductNameUpdate.Text == "") && !(textBoxPriceUpdate.Text == "") && !(richTextBoxDescriptionUpdate.Text == "") && !(comboBoxCategoryUpdate.Text == "") && !(textBoxImageUrlUpdate.Text == ""))
+            if ((textBoxProductNameUpdate.Text == "") || (textBoxPriceUpdate.Text == "") || (richTextBoxDescriptionUpdate.Text == "") || (comboBoxCategoryUpdate.Text == "") || (textBoxImageUrlUpdate.Text == ""))
             {
                 try
                 {
                     ProductRepository.UpdateProduct(new Product()
                     {
-                        id = labelID.Text,
+                        id = Convert.ToInt32(labelID.Text),
                         title = textBoxProductNameUpdate.Text,
                         price = float.Parse(textBoxPriceUpdate.Text),
                         description = richTextBoxDescriptionUpdate.Text,

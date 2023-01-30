@@ -105,6 +105,11 @@
             this.numericUpDownQuantityProduct.Cursor = System.Windows.Forms.Cursors.Hand;
             this.numericUpDownQuantityProduct.Font = new System.Drawing.Font("Nirmala UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.numericUpDownQuantityProduct.Location = new System.Drawing.Point(12, 416);
+            this.numericUpDownQuantityProduct.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.numericUpDownQuantityProduct.Name = "numericUpDownQuantityProduct";
             this.numericUpDownQuantityProduct.Size = new System.Drawing.Size(120, 22);
             this.numericUpDownQuantityProduct.TabIndex = 5;
