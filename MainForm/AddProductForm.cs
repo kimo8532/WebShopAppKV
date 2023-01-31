@@ -49,5 +49,10 @@ namespace MainForm
         {
             this.Hide();
         }
+
+        private void pictureBoxProductImage_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -50,7 +50,7 @@ namespace MainForm
                     labelPrice.Text = overAllPrice.ToString() + "€";
                 }
             }
-            catch(Exception ex)
+            catch (Exception)
             {
 
             }

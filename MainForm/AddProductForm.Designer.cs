@@ -49,6 +49,7 @@
             this.pictureBoxProductImage.Size = new System.Drawing.Size(216, 192);
             this.pictureBoxProductImage.TabIndex = 0;
             this.pictureBoxProductImage.TabStop = false;
+            this.pictureBoxProductImage.Click += new System.EventHandler(this.pictureBoxProductImage_Click);
             // 
             // labelProductName
             // 

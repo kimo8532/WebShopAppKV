@@ -17,27 +17,34 @@ namespace WebShopLibrary
     {
         public static List<User> GetUsers()
         {
-            List<User> Users = new List<User>();
-            string connectionString = "Data Source=193.198.57.183; Initial Catalog = STUDENTI_PIN;User Id = pin; Password = Vsmti1234!";
-            using (DbConnection connection = new SqlConnection(connectionString))
-            using (DbCommand command = connection.CreateCommand())
+            try
             {
-                command.CommandText = "SELECT * FROM Nemet_Users";
-                connection.Open();
-                using (DbDataReader reader = command.ExecuteReader())
+                List<User> Users = new List<User>();
+                string connectionString = "Data Source=193.198.57.183; Initial Catalog = STUDENTI_PIN;User Id = pin; Password = Vsmti1234!";
+                using (DbConnection connection = new SqlConnection(connectionString))
+                using (DbCommand command = connection.CreateCommand())
                 {
-                    while (reader.Read())
+                    command.CommandText = "SELECT * FROM Nemet_Users";
+                    connection.Open();
+                    using (DbDataReader reader = command.ExecuteReader())
                     {
-                        Users.Add(new User()
+                        while (reader.Read())
                         {
-                            Username = (string)reader["username"],
-                            Password = (string)reader["password"]
-                        });
+                            Users.Add(new User()
+                            {
+                                Username = (string)reader["username"],
+                                Password = (string)reader["password"]
+                            });
 
+                        }
                     }
                 }
+                return Users;
             }
-            return Users;
+            catch(Exception)
+            {
+                return null;
+            }
         }
     }
 }

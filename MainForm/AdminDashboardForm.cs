@@ -50,9 +50,20 @@ namespace MainForm
         {
 
         }
-
+        private void UpdateDataSource()
+        {
+            tableBindingSource.DataSource = ProductRepository.GetProductsDB();
+        }
         private void buttonCreate_Click(object sender, EventArgs e)
         {
+
+            Label CreationFailed = new Label();
+            CreationFailed.BackColor = Color.Red;
+            CreationFailed.ForeColor = Color.Black;
+            CreationFailed.Font = new Font("Nirmala UI", 8f, FontStyle.Bold);
+            CreationFailed.Location = new Point(85, 281);
+            CreationFailed.AutoSize = true;
+            tabControl1.TabPages[1].Controls.Add(CreationFailed);
             try
             {
                 if (textBoxProductName.Text == "" || !float.TryParse(textBoxPrice.Text, out _) || richTextBoxProductDescription.Text == "" || comboBoxCategory.Text == "" || textBoxImageUrl.Text =="")
@@ -68,18 +79,12 @@ namespace MainForm
                     image = textBoxImageUrl.Text
                 };
                 ProductRepository.CreateProductDb(product);
+                UpdateDataSource();
+                CreationFailed.Text = "Product successfully created";
             }
             catch (Exception ex)
             {
-
-                Label CreationFailed = new Label();
                 CreationFailed.Text = ex.Message;
-                CreationFailed.BackColor = Color.Red;
-                CreationFailed.ForeColor = Color.Black;
-                CreationFailed.Font = new Font("Nirmala UI", 8f, FontStyle.Bold);
-                CreationFailed.Location = new Point(85, 281);
-                CreationFailed.AutoSize = true;
-                tabControl1.TabPages[1].Controls.Add(CreationFailed);
             }
         }
 
@@ -103,8 +108,16 @@ namespace MainForm
 
         private void textBoxImageUrlUpdate_TextChanged(object sender, EventArgs e)
         {
-            pictureBoxProductImage.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBoxProductImage.Load(textBoxImageUrlUpdate.Text);
+            try
+            {
+                pictureBoxProductImage.SizeMode = PictureBoxSizeMode.StretchImage;
+                pictureBoxProductImage.Load(textBoxImageUrlUpdate.Text);
+            }
+            catch(Exception ex)
+            {
+                pictureBoxProductImage.Hide();
+            }
+            //https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_.jpg
         }
         private void dataGridView3_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -133,7 +146,7 @@ namespace MainForm
                 {
                     ProductRepository.DeleteProduct(labelProductId.Text);
                     DeleteAlert.Text = "You have successfully deleted a product!";
-                    tableBindingSource.DataSource = ProductRepository.GetProductsDB();
+                    UpdateDataSource();
                 }
                 else
                 {
@@ -148,10 +161,10 @@ namespace MainForm
             UpdateAlert.BackColor = Color.Red;
             UpdateAlert.ForeColor = Color.Black;
             UpdateAlert.Font = new Font("Nirmala UI", 8f, FontStyle.Bold);
-            UpdateAlert.Location = new Point(85, 281);
+            UpdateAlert.Location = new Point(38,405);
             UpdateAlert.AutoSize = true;
             tabControl1.TabPages[2].Controls.Add(UpdateAlert);
-            if ((textBoxProductNameUpdate.Text == "") || (textBoxPriceUpdate.Text == "") || (richTextBoxDescriptionUpdate.Text == "") || (comboBoxCategoryUpdate.Text == "") || (textBoxImageUrlUpdate.Text == ""))
+            if (!(textBoxProductNameUpdate.Text == "") || !(textBoxPriceUpdate.Text == "") || !(richTextBoxDescriptionUpdate.Text == "") || !(comboBoxCategoryUpdate.Text == "") || !(textBoxImageUrlUpdate.Text == ""))
             {
                 try
                 {
@@ -159,7 +172,7 @@ namespace MainForm
                     {
                         id = Convert.ToInt32(labelID.Text),
                         title = textBoxProductNameUpdate.Text,
-                        price = float.Parse(textBoxPriceUpdate.Text),
+                        price = float.Parse(textBoxPriceUpdate.Text.Replace("€","")),
                         description = richTextBoxDescriptionUpdate.Text,
                         category = comboBoxCategoryUpdate.Text,
                         image = textBoxImageUrlUpdate.Text
@@ -176,6 +189,12 @@ namespace MainForm
             {
                 UpdateAlert.Text = "Please enter all the information";
             }
+            UpdateDataSource();
+        }
+
+        private void tabUpdate_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
