@@ -29,12 +29,16 @@ namespace MainForm
         }
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex == -1)
+            try
             {
-                return;
+                if (e.RowIndex == -1)
+                {
+                    return;
+                }
+                AddProductForm form = new AddProductForm((Product)tableBindingSource.List[e.RowIndex], ref shoppingCart);
+                form.Show();
             }
-            AddProductForm form = new AddProductForm((Product)tableBindingSource.List[e.RowIndex], ref shoppingCart);
-            form.Show();
+            catch(Exception) { }
         }
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -53,8 +57,20 @@ namespace MainForm
 
         private void buttonFilter_Click(object sender, EventArgs e)
         {
-            TableBindingSource.DataSource = ProductRepository.Filter(comboBoxFilter.Text);
-            dataGridView1.DataSource = TableBindingSource.DataSource;
+            try
+            {
+                if (checkBox1.Checked)
+                {
+                    TableBindingSource.DataSource = ProductRepository.Filter(comboBoxFilter.Text, "api");
+                    dataGridView1.DataSource = TableBindingSource.DataSource;
+                }
+                else if (checkBox2.Checked)
+                {
+                    TableBindingSource.DataSource = ProductRepository.Filter(comboBoxFilter.Text, "db");
+                    dataGridView1.DataSource = TableBindingSource.DataSource;
+                }
+            }
+            catch(Exception) { }
         }
 
         private void buttonCheckShoppingCart_Click(object sender, EventArgs e)
@@ -73,12 +89,21 @@ namespace MainForm
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
-            UpdateDataSource(checkBox1, checkBox2, ProductRepository.GetProducts(), ProductRepository.GetProductsDB());
+            try
+            {
+                UpdateDataSource(checkBox1, checkBox2, ProductRepository.GetProducts(), ProductRepository.GetProductsDB());
+            }
+            catch(Exception) { }
         }
 
         private void checkBox2_CheckedChanged(object sender, EventArgs e)
         {
-            UpdateDataSource(checkBox2, checkBox1, ProductRepository.GetProductsDB(), ProductRepository.GetProducts());
+            try
+            {
+                UpdateDataSource(checkBox2, checkBox1, ProductRepository.GetProductsDB(), ProductRepository.GetProducts());
+            }
+            catch(Exception)
+            { }
         }
         private void UpdateDataSource(CheckBox checkbox1, CheckBox checkbox2, object dataSource1, object dataSource2)
         {

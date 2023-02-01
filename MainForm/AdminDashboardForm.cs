@@ -94,12 +94,16 @@ namespace MainForm
         }
         private void dataGridView2_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            List<Product> products = ProductRepository.GetProductsDB();
-            textBoxProductNameUpdate.Text = products[e.RowIndex].title;
-            textBoxPriceUpdate.Text = $"{Convert.ToString(products[e.RowIndex].price)}€";
-            textBoxImageUrlUpdate.Text = products[e.RowIndex].image;
-            richTextBoxProductDescription.Text = products[e.RowIndex].description;
-            labelID.Text= $"{products[e.RowIndex].id}";
+            try
+            {
+                List<Product> products = ProductRepository.GetProductsDB();
+                textBoxProductNameUpdate.Text = products[e.RowIndex].title;
+                textBoxPriceUpdate.Text = $"{Convert.ToString(products[e.RowIndex].price)}€";
+                textBoxImageUrlUpdate.Text = products[e.RowIndex].image;
+                richTextBoxProductDescription.Text = products[e.RowIndex].description;
+                labelID.Text = $"{products[e.RowIndex].id}";
+            }
+            catch (Exception) { }
         }
         private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -113,11 +117,10 @@ namespace MainForm
                 pictureBoxProductImage.SizeMode = PictureBoxSizeMode.StretchImage;
                 pictureBoxProductImage.Load(textBoxImageUrlUpdate.Text);
             }
-            catch(Exception ex)
+            catch (Exception)
             {
                 pictureBoxProductImage.Hide();
             }
-            //https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_.jpg
         }
         private void dataGridView3_CellClick(object sender, DataGridViewCellEventArgs e)
         {

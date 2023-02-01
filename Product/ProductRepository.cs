@@ -213,20 +213,37 @@ namespace WebShopLibrary
             catch(Exception) { return null; }
 
         }
-        public static List<Product> Filter(string category)
+        public static List<Product> Filter(string category, string source)
         {
             try
             {
-                List<Product> filtered = GetProducts();
-                if (category == "---Choose item category---")
+                if(source == "api")
                 {
-                    return filtered;
-                }
-                else
-                {
+                    List<Product> filtered = GetProducts();
+                    if (category == "---Choose item category---")
+                    {
+                        return filtered;
+                    }
+                    else
+                    {
 
-                    return filtered.Where(x => x.category == category).ToList();
+                        return filtered.Where(x => x.category == category).ToList();
+                    }
+                }    
+                else if(source == "db")
+                {
+                    List<Product> filtered = GetProductsDB();
+                    if (category == "---Choose item category---")
+                    {
+                        return filtered;
+                    }
+                    else
+                    {
+
+                        return filtered.Where(x => x.category == category).ToList();
+                    }
                 }
+                return null;
             }
             catch(Exception) { return null; }
         }
